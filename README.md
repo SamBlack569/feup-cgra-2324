@@ -1,10 +1,10 @@
 # CG 2023/2024
 
-## Group T0xG0y
+## Group T07G08
 | Name             | Number    | E-Mail             |
 | ---------------- | --------- | ------------------ |
-| John Doe         | 201901010 | ...                |
-| Jane Doe         | 201901011 | ...                |
+| Máximo Brandão Pereira         | 202108887 | up202108887@up.pt                |
+| Samuel Mendonça Maciel         | 202108697 | up202108697@up.pt                |
 
 ----
 
