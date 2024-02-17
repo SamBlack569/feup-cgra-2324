@@ -1,12 +1,15 @@
 # CG 2023/2024
 
-## Group T0xG0y
+## Group T07G08
 
 ## TP 1 Notes
 
-(add your main observations/remarks about your experiments here, in a bulleted list, and remove this line. Some examples below)
+### `Exercício 1`
 
-- In exercise 1 we observed X
-- In exercise 2 we had difficulties in Y
+- No exercício 1, conseguimos observar as diferentes formas geométricas (losango, paralelogramo e triângulo), e foi possível também criar as checkboxes e manipular as diferentes formas tanto clockwise como counter-clockwise. No paralelogramo foi necessário criar mais vértices do que no losango e no triângulo para assim conseguirmos representá-lo, e tivemos também de definir os indíces em ambos os sentidos para ser visível dos dois lados.
 
-![Screenshot 1](screenshots/cg-t0xgxx-tp1-n.png)
+### `Exercício 2`
+
+- No exercício 2, aplicamos as mesmas técnicas que usamos no exercício 1, o que tornou fácil desenhar os triângulos.
+
+![Screenshot 1](screenshots/CG-t07g08-tp1-1.png)
