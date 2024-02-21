@@ -1,9 +1,5 @@
 import { CGFscene, CGFcamera, CGFaxis } from "../lib/CGF.js";
-import { MyDiamond } from "./MyDiamond.js";
-import { MyTriangle } from "./MyTriangle.js";
-import { MyParallelogram } from "./MyParallelogram.js";
-import { MyTriangleSmall } from "./MyTriangleSmall.js";
-import { MyTriangleBig } from "./MyTriangleBig.js";
+import { MyTangram } from "./MyTangram.js";
 
 /**
  * MyScene
@@ -29,14 +25,12 @@ export class MyScene extends CGFscene {
 
     //Initialize scene objects
     this.axis = new CGFaxis(this);
-    this.diamond = new MyDiamond(this);
-    this.triangle = new MyTriangle(this);
-    this.parallelogram = new MyParallelogram(this);
-    this.triangleSmall = new MyTriangleSmall(this);
-    this.triangleBig = new MyTriangleBig(this);
+
+    this.tangram = new MyTangram(this);
 
     //Objects connected to MyInterface
     this.displayAxis = true;
+    this.displayTangram = true;
     this.scaleFactor = 1;
   }
   initLights() {
@@ -95,28 +89,14 @@ export class MyScene extends CGFscene {
       1.0,
     ];
 
-    this.multMatrix(sca);
-    this.pushMatrix();
-
     // ---- BEGIN Primitive drawing section
 
-    this.rotate(Math.PI, 0, 1, 0);
-    this.rotate(Math.PI/2, 0, 0, 1);
+    this.multMatrix(sca);
 
-    this.parallelogram.display();
-    this.popMatrix();
-    this.pushMatrix();
+    // Tangram
+
+    if (this.displayTangram) this.tangram.display();
     
-    this.translate(1, 3, 0);
-    this.rotate(-Math.PI/2, 0, 0, 1);
-    this.triangleBig.display();
-    this.popMatrix();
-    this.pushMatrix();
-
-    this.translate(3, 5, 0);
-    this.rotate(Math.PI/2, 0, 0, 1);
-    this.triangleBig.display();
-
     // ---- END Primitive drawing section
   }
 }
