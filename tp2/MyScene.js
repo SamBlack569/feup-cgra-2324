@@ -37,11 +37,6 @@ export class MyScene extends CGFscene {
 
     //Objects connected to MyInterface
     this.displayAxis = true;
-    this.displayDiamond = true;
-    this.displayTriangle = true;
-    this.displayParallelogram = true;
-    this.displayTriangleSmall = true;
-    this.displayTriangleBig = true;
     this.scaleFactor = 1;
   }
   initLights() {
@@ -78,11 +73,6 @@ export class MyScene extends CGFscene {
 
     // Draw axis
     if (this.displayAxis) this.axis.display();
-    if (this.displayDiamond) this.diamond.display();
-    if (this.displayTriangle) this.triangle.display();
-    if (this.displayParallelogram) this.parallelogram.display();
-    if (this.displayTriangleSmall) this.triangleSmall.display();
-    if (this.displayTriangleBig) this.triangleBig.display();
 
     this.setDefaultAppearance();
 
@@ -106,13 +96,26 @@ export class MyScene extends CGFscene {
     ];
 
     this.multMatrix(sca);
+    this.pushMatrix();
 
     // ---- BEGIN Primitive drawing section
 
-    /*
-    this.diamond.display();
-    this.triangle.display();
-    */
+    this.rotate(Math.PI, 0, 1, 0);
+    this.rotate(Math.PI/2, 0, 0, 1);
+
+    this.parallelogram.display();
+    this.popMatrix();
+    this.pushMatrix();
+    
+    this.translate(1, 3, 0);
+    this.rotate(-Math.PI/2, 0, 0, 1);
+    this.triangleBig.display();
+    this.popMatrix();
+    this.pushMatrix();
+
+    this.translate(3, 5, 0);
+    this.rotate(Math.PI/2, 0, 0, 1);
+    this.triangleBig.display();
 
     // ---- END Primitive drawing section
   }
