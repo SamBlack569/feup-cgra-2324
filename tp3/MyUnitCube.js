@@ -50,9 +50,9 @@ export class MyUnitCube extends CGFobject {
             
             //define normals
             this.normals = [
-                  0, 0, 1, // esquerda cima frente
-                  0, 1, 0, // esquerda cima frente
-                  1, 0, 0, // esquerda cima frente
+                  0, 0, 1, // esquerda cima frente 0
+                  0, 1, 0, // esquerda cima frente 8
+                  1, 0, 0, // esquerda cima frente 16
             ];
 
 		//The defined indices (and corresponding vertices)
