@@ -60,24 +60,41 @@ export class MyTangram extends CGFobject {
 
         //First Triangle
         this.scene.pushMatrix();
-        this.scene.translate(2,6,0)
+        this.scene.translate(2, 6, 0);
         this.scene.rotate(-Math.PI/2, 0, 0, 1);
         this.triangle.display();
         this.scene.popMatrix();
 
         //Small Triangle
         this.scene.pushMatrix();
-        this.scene.translate(2,7,0)
+        this.scene.translate(2, 7, 0);
         this.triangleSmall.display();
         this.scene.popMatrix();
 
         //Small Triangle
         this.scene.pushMatrix();
-        this.scene.translate(4,1,0)
+        this.scene.translate(4, 1, 0);
         this.scene.rotate(Math.PI/2, 0, 0, 1);
         this.triangleSmall.display();
         this.scene.popMatrix();
         this.scene.popMatrix();
       
-	}
+    }
+
+    enableNormalViz() {
+        this.diamond.enableNormalViz();
+        this.parallelogram.enableNormalViz();
+        this.triangle.enableNormalViz();
+        this.triangleSmall.enableNormalViz();
+        this.triangleBig.enableNormalViz();
+    }
+
+    disableNormalViz() {
+        this.diamond.disableNormalViz();
+        this.parallelogram.disableNormalViz();
+        this.triangle.disableNormalViz();
+        this.triangleSmall.disableNormalViz();
+        this.triangleBig.disableNormalViz();
+
+    }
 }
