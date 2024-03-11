@@ -11,13 +11,14 @@ import { MyTriangleBig } from "./MyTriangleBig.js";
  * @param scene - Reference to MyScene object
  */
 export class MyTangram extends CGFobject {
-	constructor(scene) {
+	constructor(scene, diamondColor) {
         super(scene);
         this.diamond = new MyDiamond(this.scene);
         this.triangle = new MyTriangle(this.scene);
         this.parallelogram = new MyParallelogram(this.scene);
         this.triangleSmall = new MyTriangleSmall(this.scene);
         this.triangleBig = new MyTriangleBig(this.scene);
+        this.diamondColor = diamondColor;
         this.initMaterials();
     }
 
@@ -86,7 +87,7 @@ export class MyTangram extends CGFobject {
             3.0, 2.0, 0.0, 1.0,
         ];
         this.scene.multMatrix(translacao);
-        this.diamondMaterial.apply();
+        this.diamondColor.apply();
         this.diamond.display();
         this.scene.popMatrix();
 
