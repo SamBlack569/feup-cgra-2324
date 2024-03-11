@@ -1,4 +1,5 @@
 import { CGFobject } from '../lib/CGF.js';
+import { MyQuad } from './MyQuad.js';
 
 /**
  * MyPrism
@@ -10,28 +11,31 @@ export class MyPrism extends CGFobject {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
-		this.initBuffers();
+        this.quad = new MyQuad(this.scene);
 	}
 	
-	initBuffers() {
-        this.vertices = [
-            -0.5, 0.5, 0,   // esquerda cima  0
-            -0.5, -0.5, 0,  // esquerda baixo 1
-            0.5, 0.5, 0,    // direita cima   2
-            0.5, -0.5, 0,   // direita baixo  3
-		];
+    
+    display() {
+        this.scene.pushMatrix();
 
-		//Counter-clockwise reference of vertices
-		this.indices = [
-            0, 1, 2,
-            1, 3, 2,
-		];
+        for (let i = 0; i < Math.PI * 2; i += Math.PI * 2 / this.slices) {
+            this.scene.pushMatrix();
+            this.scene.rotate(i, 0, 0, 1);
+            this.scene.translate(0, 1, 0);
+            this.scene.rotate(-Math.PI / 2, 1, 0, 0);
+            this.quad.display();
+            this.scene.popMatrix();
+        }
 
-		//The defined indices (and corresponding vertices)
-		//will be read in groups of three to draw triangles
-		this.primitiveType = this.scene.gl.TRIANGLES;
+        this.scene.popMatrix();
+    }
 
-		this.initGLBuffers();
-	}
+    enableNormalViz() {
+        this.quad.enableNormalViz();
+    }
+
+    disableNormalViz() {
+        this.quad.disableNormalViz();
+    }
 }
 
