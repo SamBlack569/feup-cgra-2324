@@ -33,6 +33,7 @@ export class MyScene extends CGFscene {
         this.plane = new MyPlane(this, 5);
         this.cone = new MyCone(this, 3, 1);
         this.pyramid = new MyPyramid(this, 3, 1);
+        this.tangram = new MyTangram(this);
         this.unitCube = new MyUnitCube(this);
         this.prism = new MyPrism(this, 6, 1);
         
@@ -136,45 +137,6 @@ export class MyScene extends CGFscene {
         this.material4.setShininess(10.0);
 
 
-        // Materials for Tangram
-        this.parallelogramColor = new CGFappearance(this);
-        this.parallelogramColor.setAmbient(0, 0, 0, 1.0);
-        this.parallelogramColor.setDiffuse(0, 0, 0, 1.0);
-        this.parallelogramColor.setSpecular(1, 1, 0, 1.0);
-        this.parallelogramColor.setShininess(10.0);
-
-        this.BigTriangleTopColor = new CGFappearance(this);
-        this.BigTriangleTopColor.setAmbient(0, 0, 0, 1.0);
-        this.BigTriangleTopColor.setDiffuse(0, 0, 0, 1.0);
-        this.BigTriangleTopColor.setSpecular(1, 165/255, 0, 1.0);
-        this.BigTriangleTopColor.setShininess(10.0);
-
-        this.BigTriangleBottomColor = new CGFappearance(this);
-        this.BigTriangleBottomColor.setAmbient(0, 0, 0, 1.0);
-        this.BigTriangleBottomColor.setDiffuse(0, 0, 0, 1.0);
-        this.BigTriangleBottomColor.setSpecular(0, 0, 1, 1.0);
-        this.BigTriangleBottomColor.setShininess(10.0);
-
-        this.TriangleColor = new CGFappearance(this);
-        this.TriangleColor.setAmbient(0, 0, 0, 1.0);
-        this.TriangleColor.setDiffuse(0, 0, 0, 1.0);
-        this.TriangleColor.setSpecular(1, 192/255, 203/255, 1.0);
-        this.TriangleColor.setShininess(10.0);
-
-        this.SmallTriangleTopColor = new CGFappearance(this);
-        this.SmallTriangleTopColor.setAmbient(0, 0, 0, 1.0);
-        this.SmallTriangleTopColor.setDiffuse(0, 0, 0, 1.0);
-        this.SmallTriangleTopColor.setSpecular(1, 0, 0, 1.0);
-        this.SmallTriangleTopColor.setShininess(10.0);
-
-        this.SmallTriangleBottomColor = new CGFappearance(this);
-        this.SmallTriangleBottomColor.setAmbient(0, 0, 0, 1.0);
-        this.SmallTriangleBottomColor.setDiffuse(0, 0, 0, 1.0);
-        this.SmallTriangleBottomColor.setSpecular(128/255, 0, 128/255, 1.0);
-        this.SmallTriangleBottomColor.setShininess(10.0);
-
-
-
         // Custom material (can be changed in the interface)
         // initially midrange values on ambient, diffuse and specular, on R, G and B respectively
 
@@ -187,8 +149,6 @@ export class MyScene extends CGFscene {
         this.customMaterial = new CGFappearance(this);
 
         this.updateCustomMaterial();
-
-        this.tangram = new MyTangram(this, this.customMaterial, this.parallelogramColor, this.BigTriangleBottomColor, this.BigTriangleTopColor, this.TriangleColor, this.SmallTriangleBottomColor, this.SmallTriangleTopColor);
 
         this.materials = [this.material1, this.material2, this.material3, this.material4,this.customMaterial];
 
