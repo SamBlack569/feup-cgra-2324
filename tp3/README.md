@@ -17,3 +17,9 @@
 - Para usar o material `Custom` no diamante do tangrama, passamos o material como argumento do construtor de `MyTangram`, para que pudéssemos costumizar os seus valores através da interface.
 
 ![Screenshot 2](screenshots/CG-t07g08-tp3-2.png)
+
+### Parte 2 - Desenho de um prisma
+
+- Nesta parte, tinhamos de desenhar um prisma com n lados e m andares (n e m à escolha). Foi mais complexo a variação do número de lados porque a estrutura desformatava.
+
+![Screenshot 3](screenshots/CG-t07g08-tp3-2.png)
