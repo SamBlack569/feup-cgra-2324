@@ -11,10 +11,33 @@ export class MyPrism extends CGFobject {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
-        this.quad = new MyQuad(this.scene);
+        this.initBuffers();
 	}
 	
-    
+    initBuffers() {
+        
+        this.vertices = [];
+
+        this.indices = [];
+
+        this.normals = [];
+
+        let sos = 2 * Math.PI / this.slices;
+
+        for(let l = 0; l < this.slices; l++) {
+
+            let x1 = Math.cos(i*sos);
+            let y1 = Math.sin(i*sos);
+            let x2 = Math.cos((i+1)*sos);
+            let y2 = Math.sin((i+1)*sos);
+
+            for(let b = 0; b < this.stacks; b++) {
+
+            }
+        }
+    }
+
+    /*
     display() {
         this.scene.pushMatrix();
 
@@ -39,5 +62,6 @@ export class MyPrism extends CGFobject {
     disableNormalViz() {
         this.quad.disableNormalViz();
     }
+    */
 }
 
