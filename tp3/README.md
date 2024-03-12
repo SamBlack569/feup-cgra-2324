@@ -22,4 +22,4 @@
 
 - Nesta parte, tinhamos de desenhar um prisma com n lados e m andares (n e m à escolha). Foi mais complexo a variação do número de lados porque a estrutura desformatava.
 
-![Screenshot 3](screenshots/CG-t07g08-tp3-2.png)
+![Screenshot 3](screenshots/CG-t07g08-tp3-3.png)
