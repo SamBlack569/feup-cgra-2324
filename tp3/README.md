@@ -23,3 +23,9 @@
 - Nesta parte, tinhamos de desenhar um prisma com n lados e m andares (n e m à escolha). Foi mais complexo a variação do número de lados porque a estrutura desformatava.
 
 ![Screenshot 3](screenshots/CG-t07g08-tp3-3.png)
+
+### Parte 3 - Superfície Cilíndrica - Aplicação de Gouraud shading
+
+- Nesta parte, desenhamos um cilindro da mesma forma que desenhamos o prisma, mas com as normais diferentes, para dar um aspeto mais curvo à superfície, em vez de se poder distinguir cada face. Para isto foi necessário ajustar os ângulos que usávamos para criar os vetores das normais, e precisamos de eliminar os vértices e normais repetidos.
+
+![Screenshot 4](screenshots/CG-t07g08-tp3-4.png)
