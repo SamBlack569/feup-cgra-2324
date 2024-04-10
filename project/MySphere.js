@@ -25,7 +25,7 @@ export class MySphere extends CGFobject {
             this.texCoords.push(0, height / (this.stacks * 2));
         }
 
-        let angXZ, angXY, x, y, z, points, index1, index2, index3, index4, y_factor;
+        let angXZ, angXY, x, y, z, points, index1, index2, index3, index4;
         for (let i = 1; i <= this.slices + 1; i++) {
 
             angXZ = 2 * Math.PI * i / this.slices;
@@ -37,13 +37,12 @@ export class MySphere extends CGFobject {
             for (let j = 0; j <= this.stacks * 2; j++) {
 
                 angXY = - Math.PI / 2 + Math.PI * j / (2 * this.stacks);
-                y_factor = 1; // change to set sphere to be more or less flattened
 
                 x = Math.cos(angXZ) * Math.cos(angXY);
                 z = Math.sin(angXZ) * Math.cos(angXY);
                 y = Math.sin(angXY);
                 
-                this.vertices.push(this.radius * x, this.radius * y * y_factor, this.radius * z);
+                this.vertices.push(this.radius * x, this.radius * y, this.radius * z);
                 this.normals.push(x, y, z);
                 this.texCoords.push(1 - i / this.slices, 1 - j / (this.stacks * 2));
                 points = this.vertices.length / 3;
