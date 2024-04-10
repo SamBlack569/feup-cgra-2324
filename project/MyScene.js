@@ -35,12 +35,18 @@ export class MyScene extends CGFscene {
 
     this.enableTextures(true);
 
-this.texture = new CGFtexture(this, "images/terrain.jpg");
-this.earthTex = new CGFtexture(this, "images/earth.jpg");
-this.appearance = new CGFappearance(this);
-this.appearance.setTexture(this.texture);
-this.appearance.setTextureWrap('REPEAT', 'REPEAT');
+    this.texture = new CGFtexture(this, "images/terrain.jpg");
+    this.appearance = new CGFappearance(this);
+    this.appearance.setTexture(this.texture);
+    this.appearance.setTextureWrap('REPEAT', 'REPEAT');
 
+    this.grassTex = new CGFtexture(this, "images/grass.jpg");
+    this.grassApp = new CGFappearance(this);
+    this.grassApp.setTexture(this.grassTex);
+
+    this.earthTex = new CGFtexture(this, "images/earth.jpg");
+    this.earthApp = new CGFappearance(this);
+    this.earthApp.setTexture(this.earthTex);
   }
   initLights() {
     this.lights[0].setPosition(15, 0, 5, 1);
@@ -80,13 +86,13 @@ this.appearance.setTextureWrap('REPEAT', 'REPEAT');
     // ---- BEGIN Primitive drawing section
 
     this.pushMatrix();
-    this.appearance.apply();
+    this.grassApp.apply();
     this.translate(0,-100,0);
     this.scale(400,400,400);
     this.rotate(-Math.PI/2.0,1,0,0);
     this.plane.display();
     this.popMatrix();
-    this.appearance.setTexture(this.earthTex);
+    this.earthApp.apply();
     this.sphere.display();
 
     // ---- END Primitive drawing section
