@@ -9,7 +9,7 @@ import { MyStem } from './MyStem.js';
  * @param scene - Reference to MyScene object
  */
 export class MyTangram extends CGFobject {
-	constructor(scene) {
+	constructor(scene, n_petals, color_petals, radius_recep, color_recep, radius_stem, n_stem, color_stem, color_leaf) {
 		super(scene);
         this.petal = new MyPetal(this.scene);
         this.receptacle = new MyReceptacle(this.scene);
@@ -17,6 +17,6 @@ export class MyTangram extends CGFobject {
 	}
 
     display() {
-        
+
     }
 }
