@@ -33,6 +33,7 @@ export class MyScene extends CGFscene {
 
     //Objects connected to MyInterface
     this.displayAxis = true;
+    this.displayEarth = false;
     this.scaleFactor = 1;
 
     this.enableTextures(true);
@@ -95,7 +96,8 @@ export class MyScene extends CGFscene {
     this.plane.display();
     this.popMatrix();
     this.earthApp.apply();
-    this.sphere.display();
+    if (this.displayEarth) this.sphere.display();
+    
     this.panorama.display();
 
     // ---- END Primitive drawing section
