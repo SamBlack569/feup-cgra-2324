@@ -2,6 +2,7 @@ import { CGFscene, CGFcamera, CGFaxis, CGFappearance, CGFshader, CGFtexture } fr
 import { MyPlane } from "./MyPlane.js";
 import { MySphere } from "./MySphere.js";
 import { MyPanorama } from "./MyPanorama.js";
+import { MyRockSet } from "./MyRockSet.js";
 
 /**
  * MyScene
@@ -30,6 +31,7 @@ export class MyScene extends CGFscene {
     this.plane = new MyPlane(this,30);
     this.sphere = new MySphere(this, 1, 25, 15, false);
     this.panorama = new MyPanorama(this);
+    this.rockSet = new MyRockSet(this, 10);
 
     //Objects connected to MyInterface
     this.displayAxis = true;
@@ -97,7 +99,7 @@ export class MyScene extends CGFscene {
     this.popMatrix();
     this.earthApp.apply();
     if (this.displayEarth) this.sphere.display();
-    
+    this.rockSet.display();
     this.panorama.display();
 
     // ---- END Primitive drawing section
