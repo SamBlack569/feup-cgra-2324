@@ -26,36 +26,54 @@ export class MyRockSet extends CGFobject {
         for (let i = 0; i < this.number; i++) {
             this.rocks.push(new MyRock(this.scene, 1, 10, 10));
         }
-        this.rock = new MyRock(this.scene, 1, 10, 10);
     }
 
     display() {
         this.scene.pushMatrix();
         this.material.apply();
         this.scene.translate(0, 0, 0);
-        let i = 0;
-        let x = 0;
-        let y = 0;
-        let z = 0;
         for (const rock of this.rocks) {
-            if (i < 3) {
-                x += 2;
-            } else if (i < 7) {
-                x = 0;
-                z += 2;
-            } else {
-                x = 0;
-                z = 0;
-                y += 2;
-            }
             this.scene.pushMatrix();
-            this.scene.translate(x, y, z);
             this.scene.rotate(Math.PI / 2, 1, 0, 0);
             this.scene.scale(1, 1, 0.5);
             rock.display();
             this.scene.popMatrix();
-            i++;
         }
         this.scene.popMatrix();
     }
+    display() {
+        this.scene.pushMatrix();
+        this.material.apply();
+        this.scene.translate(0, -20, 40);
+
+        // Calculate number of rows in the pyramid
+        const numRows = Math.ceil(Math.sqrt(this.number));
+
+        // Loop through each row
+        for (let row = 0; row < numRows; row++) {
+            // Calculate number of rocks in current row
+            const numRocksInRow = row + 1;
+
+            // Calculate offset for spacing between rocks in current row
+            const rowOffset = numRocksInRow * 1.5; // Adjust the spacing as needed
+
+            // Loop through each rock in current row
+            for (let col = 0; col < numRocksInRow; col++) {
+                // Calculate position for current rock
+                const x = col * rowOffset - (rowOffset * (numRocksInRow - 1)) / 2;
+                const y = -row * rowOffset - (rowOffset * (numRows - 1)) / 2;
+
+                // Translate to the calculated position
+                this.scene.pushMatrix();
+                this.scene.translate(x, y, 0);
+                this.scene.rotate(Math.PI / 2, 1, 0, 0);
+                this.scene.scale(1, 1, 0.5);
+                // Display the rock
+                this.rocks[row * numRows + col].display();
+                this.scene.popMatrix();
+            }
+        }
+    this.scene.popMatrix();
+    }
+
 }
