@@ -31,7 +31,7 @@ export class MyScene extends CGFscene {
     this.plane = new MyPlane(this,30);
     this.sphere = new MySphere(this, 1, 25, 15, false);
     this.panorama = new MyPanorama(this);
-    this.rockSet = new MyRockSet(this, 25);
+    this.rockSet = new MyRockSet(this);
 
     //Objects connected to MyInterface
     this.displayAxis = true;

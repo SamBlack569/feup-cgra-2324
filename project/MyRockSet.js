@@ -4,9 +4,9 @@ import { MyRock } from './MyRock.js';
 
 export class MyRockSet extends CGFobject {
 
-    constructor(scene, number) {
+    constructor(scene) {
         super(scene);
-        this.number = number;
+        this.number = 49;
         this.initMaterial();
         this.initRocks();
     }
@@ -24,7 +24,7 @@ export class MyRockSet extends CGFobject {
     initRocks() {
         this.rocks = [];
         for (let i = 0; i < this.number; i++) {
-            this.rocks.push(new MyRock(this.scene, 1, 10, 10));
+            this.rocks.push(new MyRock(this.scene, this.generateRandom(80)/100 + 0.6, 10, 10));
         }
     }
 
@@ -44,7 +44,7 @@ export class MyRockSet extends CGFobject {
     display() {
         this.scene.pushMatrix();
         this.material.apply();
-        this.scene.translate(0, -20, 40);
+        this.scene.translate(0, -75, 40);
 
         // Calculate number of rows in the pyramid
         const numRows = Math.ceil(Math.sqrt(this.number));
@@ -55,13 +55,13 @@ export class MyRockSet extends CGFobject {
             const numRocksInRow = row + 1;
 
             // Calculate offset for spacing between rocks in current row
-            const rowOffset = numRocksInRow * 1.5; // Adjust the spacing as needed
+            const rowOffset = numRocksInRow * 0.5; // Adjust the spacing as needed
 
             // Loop through each rock in current row
             for (let col = 0; col < numRocksInRow; col++) {
                 // Calculate position for current rock
                 const x = col * rowOffset - (rowOffset * (numRocksInRow - 1)) / 2;
-                const y = -row * rowOffset - (rowOffset * (numRows - 1)) / 2;
+                const y = -row * rowOffset/2 - (rowOffset * (numRows - 1)) / 2;
 
                 // Translate to the calculated position
                 this.scene.pushMatrix();
@@ -73,7 +73,7 @@ export class MyRockSet extends CGFobject {
                 this.scene.popMatrix();
             }
         }
-    this.scene.popMatrix();
+        this.scene.popMatrix();
     }
 
 }
