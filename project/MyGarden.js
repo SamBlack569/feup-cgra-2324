@@ -1,4 +1,5 @@
-import {CGFobject, CGFappearance} from '../lib/CGF.js';
+import { CGFobject, CGFappearance } from '../lib/CGF.js';
+import { MyFlower } from './MyFlower.js';
 
 /**
  * MyGarden
@@ -11,6 +12,7 @@ export class MyGarden extends CGFobject {
 		super(scene);
 		this.nOfLines = nOfLines;
 		this.flowers = [];
+		this.initFlowers();
 	}
 
 	generateRandom(max) {
@@ -18,16 +20,27 @@ export class MyGarden extends CGFobject {
 	}
 
 	generateInteger(min, max) {
-		return Math.floor(Math.random() * max - 1 + min);
+		return Math.floor(Math.random() * max + 1 + min);
 	}
 	
-	init() {
+	initFlowers() {
 		for (let i = 0; i < this.nOfLines ^ 2; i++) {
-			this.flowers.push(new MyFlower(this.scene, this.generateInteger(4, 10), this.generateInteger(5, 10), this.generateInteger(3,6)));
+			this.flowers.push(new MyFlower(this.scene, this.generateInteger(4, 10), this.generateInteger(5, 10), this.generateInteger(4,8)));
 		}
 	}
 	
 	display() {
-
+		const spacing = 10;
+		let curr = 0;
+		for (let line = 0; line < this.nOfLines; line++) {
+			for (let column = 0; column < this.nOfLines; column++) {
+				this.scene.pushMatrix();
+				this.scene.translate(line * spacing, column * spacing, 0);
+				this.flowers[curr].display();
+				this.scene.popMatrix();
+				curr++;
+			}
+		}
+		
 	}
 }

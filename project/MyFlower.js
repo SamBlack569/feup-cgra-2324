@@ -15,7 +15,7 @@ export class MyFlower extends CGFobject {
         this.n_petals = n_petals;
         this.petal = new MyPetal(this.scene);
         this.receptacle = new MyReceptacle(this.scene, radius_recep);
-        this.stem = new MyStem(this.scene, 10, 4);
+        this.stem = new MyStem(this.scene, 10, n_stem);
     }
 
     generateInteger(max) {
