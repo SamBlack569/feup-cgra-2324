@@ -12,7 +12,7 @@ export class MyReceptacle extends CGFobject {
     constructor(scene, radius) {
         super(scene);
         this.scene = scene;
-        this.recep = new MySphere(this.scene, radius, 30, 20, true);
+        this.recep = new MySphere(this.scene, radius, 15, 10, true);
         this.initMaterials();
     }
 
