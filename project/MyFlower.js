@@ -14,14 +14,26 @@ export class MyFlower extends CGFobject {
         this.radius_recep = radius_recep;
         this.n_petals = n_petals;
         this.radius_stem = radius_stem;
-        this.petal = new MyPetal(this.scene, 2);
+        this.petal = new MyPetal(this.scene, Math.PI / this.generateInteger(4, 15), 2);
         this.receptacle = new MyReceptacle(this.scene, radius_recep);
         this.stem = new MyStem(this.scene, 5, n_stem);
+        this.initMaterials();
     }
 
-    generateInteger(max) {
-        return Math.random() * max;
+    initMaterials() {
+        this.stemTex = new CGFappearance(this.scene);
+        this.stemTex.setDiffuse(1, 1, 1, 1);
+        this.stemTex.setShininess(50.0);
+        this.stemTex.loadTexture("images/stem_tex.jpg");
     }
+
+    generateRandom(max) {
+        return Math.random() * max;
+	}
+
+	generateInteger(min, max) {
+		return Math.floor(Math.random() * (max - min) + min);
+	}
 
     display() {
         this.scene.pushMatrix();
@@ -34,6 +46,7 @@ export class MyFlower extends CGFobject {
         this.scene.rotate(Math.PI / 2, 1, 0, 0);
         this.scene.scale(0.2 * this.radius_stem, 0.2 * this.radius_stem, 2);
 
+        this.stemTex.apply();
         this.stem.display();
 
         this.scene.popMatrix();

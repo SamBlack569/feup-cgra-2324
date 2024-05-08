@@ -19,6 +19,7 @@ export class MyStem extends CGFobject {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
+        this.texCoords = [];
 
         // Loop to create vertices, indices, and normals for each slice and stack
         for (let slice = 0; slice <= this.slices; slice++) {
@@ -28,14 +29,20 @@ export class MyStem extends CGFobject {
             const x = Math.cos(angle);
             const y = Math.sin(angle);
 
+            const s = slice / this.slices;
+
             // Loop through each stack for the current slice
             for (let stack = 0; stack <= this.stacks; stack++) {
                 // Calculate z coordinate for the current stack
                 const z = stack;
 
+                const t = stack / this.stack;
+
                 // Add vertex and normal for the current stack
                 this.vertices.push(x, y, z);
                 this.normals.push(x, y, 0);
+
+                this.texCoords.push(s,t);
 
                 // Calculate indices for the current quad
                 if (slice < this.slices && stack < this.stacks) {

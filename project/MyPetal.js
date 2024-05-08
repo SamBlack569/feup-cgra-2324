@@ -7,8 +7,9 @@ import { CGFobject, CGFappearance } from '../lib/CGF.js';
  */
 
 export class MyPetal extends CGFobject {
-	constructor(scene, texture) {
+	constructor(scene, angle, texture) {
 		super(scene);
+		this.angle = angle;
 		this.texture = texture;
 		this.initMaterials();
 		this.initTriangle();
@@ -73,7 +74,7 @@ export class MyPetal extends CGFobject {
 		this.scene.scale(1, -1 , 1);
 		
 		this.scene.translate(0, -2, 0);
-		this.scene.rotate(Math.PI / 10, 1, 0, 0);
+		this.scene.rotate(this.angle, 1, 0, 0);
 		this.scene.translate(0, -2, 0);
 
 		this.triangle.display();
