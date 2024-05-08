@@ -1,4 +1,4 @@
-import { CGFobject } from '../lib/CGF.js';
+import { CGFobject, CGFappearance } from '../lib/CGF.js';
 import { MyPetal } from './MyPetal.js';
 import { MyReceptacle } from './MyReceptacle.js';
 import { MyStem } from './MyStem.js';
@@ -13,17 +13,14 @@ export class MyFlower extends CGFobject {
         super(scene);
         this.radius_recep = radius_recep;
         this.n_petals = n_petals;
-        this.petal = new MyPetal(this.scene);
+        this.radius_stem = radius_stem;
+        this.petal = new MyPetal(this.scene, 2);
         this.receptacle = new MyReceptacle(this.scene, radius_recep);
-        this.stem = new MyStem(this.scene, 10, n_stem);
+        this.stem = new MyStem(this.scene, 5, n_stem);
     }
 
     generateInteger(max) {
         return Math.random() * max;
-    }
-
-    initMaterials() {
-        
     }
 
     display() {
@@ -35,7 +32,7 @@ export class MyFlower extends CGFobject {
 
         this.scene.translate(0, -this.radius_recep, 0);
         this.scene.rotate(Math.PI / 2, 1, 0, 0);
-        this.scene.scale(0.3, 0.3, 2);
+        this.scene.scale(0.2 * this.radius_stem, 0.2 * this.radius_stem, 2);
 
         this.stem.display();
 
