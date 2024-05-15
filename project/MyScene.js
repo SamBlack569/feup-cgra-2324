@@ -4,6 +4,7 @@ import { MySphere } from "./MySphere.js";
 import { MyPanorama } from "./MyPanorama.js";
 import { MyFlower } from "./MyFlower.js";
 import { MyGarden } from "./MyGarden.js";
+import { MyBee } from "./MyBee.js";
 
 /**
  * MyScene
@@ -34,12 +35,14 @@ export class MyScene extends CGFscene {
     this.panorama = new MyPanorama(this);
     this.flower = new MyFlower(this, 10, 1, 10, 8);
     this.garden = new MyGarden(this, 4);
+    this.bee = new MyBee(this);
 
     //Objects connected to MyInterface
     this.displayAxis = true;
     this.displayEarth = false;
     this.displayFlower = false;
-    this.displayGarden = true;
+    this.displayGarden = false;
+    this.displayBee = true;
     this.scaleFactor = 1;
 
     this.enableTextures(true);
@@ -106,6 +109,7 @@ export class MyScene extends CGFscene {
     if (this.displayEarth) this.sphere.display();
     if (this.displayFlower) this.flower.display();
     if (this.displayGarden) this.garden.display();
+    if (this.displayBee) this.bee.display();
     
     this.panorama.display();
 
