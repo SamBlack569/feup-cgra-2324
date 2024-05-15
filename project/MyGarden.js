@@ -34,6 +34,9 @@ export class MyGarden extends CGFobject {
 	}
 	
 	display() {
+		this.scene.pushMatrix();
+		this.scene.translate(0, -96, 0);
+
 		const spacing = 15;
 		let curr = 0;
 		for (let line = 0; line < this.nOfLines; line++) {
@@ -46,5 +49,6 @@ export class MyGarden extends CGFobject {
 			}
 		}
 		
+		this.scene.popMatrix();
 	}
 }
