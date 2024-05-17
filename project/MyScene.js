@@ -3,6 +3,8 @@ import { MyPlane } from "./MyPlane.js";
 import { MySphere } from "./MySphere.js";
 import { MyPanorama } from "./MyPanorama.js";
 import { MyRockSet } from "./MyRockSet.js";
+import { MyFlower } from "./MyFlower.js";
+import { MyGarden } from "./MyGarden.js";
 
 /**
  * MyScene
@@ -32,10 +34,13 @@ export class MyScene extends CGFscene {
     this.sphere = new MySphere(this, 1, 25, 15, false);
     this.panorama = new MyPanorama(this);
     this.rockSet = new MyRockSet(this);
+    this.garden = new MyGarden(this, 4);
 
     //Objects connected to MyInterface
     this.displayAxis = true;
     this.displayEarth = false;
+    this.displayGarden = true;
+    this.displayRockSet = true;
     this.scaleFactor = 1;
 
     this.enableTextures(true);
@@ -98,8 +103,11 @@ export class MyScene extends CGFscene {
     this.plane.display();
     this.popMatrix();
     this.earthApp.apply();
+    
     if (this.displayEarth) this.sphere.display();
-    this.rockSet.display();
+    if (this.displayGarden) this.garden.display();
+    if (this.displayRockSet) this.rockSet.display();
+    
     this.panorama.display();
 
     // ---- END Primitive drawing section

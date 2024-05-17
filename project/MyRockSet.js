@@ -27,24 +27,11 @@ export class MyRockSet extends CGFobject {
             this.rocks.push(new MyRock(this.scene, this.generateRandom(80)/100 + 0.6, 10, 10));
         }
     }
-
+    
     display() {
         this.scene.pushMatrix();
         this.material.apply();
-        this.scene.translate(0, 0, 0);
-        for (const rock of this.rocks) {
-            this.scene.pushMatrix();
-            this.scene.rotate(Math.PI / 2, 1, 0, 0);
-            this.scene.scale(1, 1, 0.5);
-            rock.display();
-            this.scene.popMatrix();
-        }
-        this.scene.popMatrix();
-    }
-    display() {
-        this.scene.pushMatrix();
-        this.material.apply();
-        this.scene.translate(0, -75, 40);
+        this.scene.translate(0, -75, -50);
 
         // Calculate number of rows in the pyramid
         const numRows = Math.ceil(Math.sqrt(this.number));
