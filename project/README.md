@@ -47,3 +47,11 @@
 - Colocámos 3 texturas diferentes para as pétalas e apenas uma para o receptáculo e para o caule.
 
 ![Screenshot 2](screenshots/CG-t07g08-project-2.png)
+
+### 3 - Pedras e penedos
+
+- Para criar o `MyRockSet`, criamos um _array_ com elementos `MyRock` com tamanhos aleatórios que será mostrado em forma de pirâmide 2D.
+
+- `MyRock` foi criado com base na classe `MySphere`, em que cada vértice tem um offset aleatório, fazendo uma superfície imperfeita.
+
+![Screenshot 3](screenshots/CG-t07g08-project-3.png)
