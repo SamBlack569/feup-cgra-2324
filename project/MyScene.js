@@ -6,6 +6,7 @@ import { MyRockSet } from "./MyRockSet.js";
 import { MyFlower } from "./MyFlower.js";
 import { MyGarden } from "./MyGarden.js";
 import { MyBee } from "./MyBee.js";
+import { MyHive } from "./MyHive.js";
 
 /**
  * MyScene
@@ -36,7 +37,8 @@ export class MyScene extends CGFscene {
     this.displayEarth = false;
     this.displayGarden = true;
     this.displayRockSet = true;
-    this.displayBee = true;
+    this.displayBee = false;
+    this.displayHive = true;
     this.scaleFactor = 1;
 
     //Initialize scene objects
@@ -47,6 +49,7 @@ export class MyScene extends CGFscene {
     this.garden = new MyGarden(this, 4);
     this.rockSet = new MyRockSet(this);
     this.bee = new MyBee(this);
+    this.hive = new MyHive(this);
 
     this.enableTextures(true);
 
@@ -112,6 +115,7 @@ export class MyScene extends CGFscene {
     if (this.displayEarth) this.sphere.display();
     if (this.displayGarden) this.garden.display();
     if (this.displayRockSet) this.rockSet.display();
+    if (this.displayHive) this.hive.display();
     if (this.displayBee) this.bee.display();
     
     this.panorama.display();
