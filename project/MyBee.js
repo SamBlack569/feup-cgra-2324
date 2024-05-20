@@ -11,7 +11,7 @@ import { MySemiSphere } from "./MySemiSphere.js";
 
 export class MyBee extends CGFobject {
     constructor(scene) {
-		super(scene);
+        super(scene);
         this.head = new MyBeeHead(this.scene);
         this.torax = new MySphere(this.scene, 0.7, 9, 9, false);
         this.semi = new MySemiSphere(this.scene, 0.7, 9, 9);
@@ -41,7 +41,8 @@ export class MyBee extends CGFobject {
         this.wingTex.setEmission(1, 1, 1, 0);
     }
 
-    display(){
+    display() {
+        this.scene.pushMatrix();
 
         this.scene.pushMatrix();
 
@@ -160,6 +161,8 @@ export class MyBee extends CGFobject {
         this.scene.translate(0, 0, 0);
         this.scene.rotate(-Math.PI/2, 0, 0, 1);
         this.wing.display();
+
+        this.scene.popMatrix();
 
         this.scene.popMatrix();
 

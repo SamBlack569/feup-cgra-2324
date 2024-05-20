@@ -2,6 +2,7 @@ import { CGFscene, CGFcamera, CGFaxis, CGFappearance, CGFshader, CGFtexture } fr
 import { MyPlane } from "./MyPlane.js";
 import { MySphere } from "./MySphere.js";
 import { MyPanorama } from "./MyPanorama.js";
+import { MyRockSet } from "./MyRockSet.js";
 import { MyFlower } from "./MyFlower.js";
 import { MyGarden } from "./MyGarden.js";
 import { MyBee } from "./MyBee.js";
@@ -30,22 +31,22 @@ export class MyScene extends CGFscene {
     this.gl.enable(this.gl.BLEND);
     this.gl.depthFunc(this.gl.LEQUAL);
 
+    //Objects connected to MyInterface
+    this.displayAxis = true;
+    this.displayEarth = false;
+    this.displayGarden = true;
+    this.displayRockSet = true;
+    this.displayBee = true;
+    this.scaleFactor = 1;
+
     //Initialize scene objects
     this.axis = new CGFaxis(this);
     this.plane = new MyPlane(this,30);
     this.sphere = new MySphere(this, 1, 25, 15, false);
     this.panorama = new MyPanorama(this);
-    this.flower = new MyFlower(this, 10, 1, 10, 8);
     this.garden = new MyGarden(this, 4);
+    this.rockSet = new MyRockSet(this);
     this.bee = new MyBee(this);
-
-    //Objects connected to MyInterface
-    this.displayAxis = true;
-    this.displayEarth = false;
-    this.displayFlower = false;
-    this.displayGarden = false;
-    this.displayBee = true;
-    this.scaleFactor = 1;
 
     this.enableTextures(true);
 
@@ -109,8 +110,8 @@ export class MyScene extends CGFscene {
     this.earthApp.apply();
     
     if (this.displayEarth) this.sphere.display();
-    if (this.displayFlower) this.flower.display();
     if (this.displayGarden) this.garden.display();
+    if (this.displayRockSet) this.rockSet.display();
     if (this.displayBee) this.bee.display();
     
     this.panorama.display();
