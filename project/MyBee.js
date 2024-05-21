@@ -18,6 +18,7 @@ export class MyBee extends CGFobject {
         this.band = new MyStem(this.scene, 9, 1);
         this.leg = new MyBeeLeg(this.scene);
         this.wing = new MyBeeWing(this.scene);
+        this.wingAmpDen = 2;
         this.scaleFactor = 1;
         this.speedFactor = 1;
         this.initMaterials();
@@ -95,6 +96,12 @@ export class MyBee extends CGFobject {
         this.position = { x: 0, y: 0, z: 0 };
         this.orientation = 0;
         this.velocity = { x: 0, y: 0, z: 0 };
+    }
+
+
+    //Wings Animation
+    updateWings(timeSinceAppStart){
+        this.wingAmpDen = Math.max(1.8, 16 - Math.min(16, 1.8 + 16 * Math.sin(timeSinceAppStart / 50)));
     }
 
     display() {
@@ -216,11 +223,10 @@ export class MyBee extends CGFobject {
         this.wingTex.apply();
 
         this.scene.translate(0, 0.5, -0.4);
-        this.scene.rotate(Math.PI/4, 0, 0, 1);
+        this.scene.rotate(Math.PI/this.wingAmpDen, 0, 0, 1);
         this.wing.display();
 
-        this.scene.translate(0, 0, 0);
-        this.scene.rotate(-Math.PI/2, 0, 0, 1);
+        this.scene.rotate(-2 * Math.PI/this.wingAmpDen, 0, 0, 1);
         this.wing.display();
 
         this.scene.popMatrix();
