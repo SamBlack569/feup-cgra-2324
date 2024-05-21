@@ -62,9 +62,6 @@ export class MyBee extends CGFobject {
         // Update position based on velocity and delta_t
         this.position.x += this.velocity.x * delta_t;
         this.position.y += this.velocity.y * delta_t;
-        if (this.position.y >= 0 && this.velocity.y > 0) {
-            this.velocity.y = 0;
-        }
         this.position.z += this.velocity.z * delta_t;
 
         this.display();
