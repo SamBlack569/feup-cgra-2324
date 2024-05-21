@@ -18,7 +18,14 @@ export class MyBee extends CGFobject {
         this.band = new MyStem(this.scene, 9, 1);
         this.leg = new MyBeeLeg(this.scene);
         this.wing = new MyBeeWing(this.scene);
+        this.scaleFactor = 1;
+        this.speedFactor = 1;
         this.initMaterials();
+
+        // Position and orientation
+        this.position = { x: 0, y: 0, z: 0 };
+        this.orientation = 0; // Angle around the YY axis
+        this.velocity = { x: 0, y: 0, z: 0 };
 	}
 
     initMaterials() {
@@ -41,8 +48,62 @@ export class MyBee extends CGFobject {
         this.wingTex.setEmission(1, 1, 1, 0);
     }
 
+    setScaleFactor(v) {
+        this.scaleFactor = v;
+    }
+
+    setSpeedFactor(v) {
+        this.speedFactor = v;
+    }
+
+    update(delta_t) {
+        // Update position based on velocity and delta_t
+        this.position.x += this.velocity.x * delta_t;
+        this.position.y += this.velocity.y * delta_t;
+        this.position.z += this.velocity.z * delta_t;
+
+        this.display();
+    }
+
+     turn(v) {
+        // Update orientation
+        this.orientation += v * this.speedFactor;
+
+        // Normalize the angle to be within 0 to 2*PI
+        this.orientation = this.orientation % (2 * Math.PI);
+
+        // Update the velocity vector direction
+        const speed = Math.sqrt(this.velocity.x**2 + this.velocity.y**2 + this.velocity.z**2);
+        this.velocity.x = speed * Math.sin(this.orientation);
+        this.velocity.z = speed * Math.cos(this.orientation);
+    }
+
+    accelerate(v) {
+        // Calculate the current speed
+        const speed = Math.sqrt(this.velocity.x**2 + this.velocity.y**2 + this.velocity.z**2);
+
+        // Update speed by v
+        let newSpeed = speed + v * this.speedFactor;
+        newSpeed = newSpeed < 0 ? 0 : newSpeed;
+
+        // Update the velocity vector maintaining the direction
+        this.velocity.x = newSpeed * Math.sin(this.orientation);
+        this.velocity.z = newSpeed * Math.cos(this.orientation);
+    }
+
+    reset() {
+        this.position = { x: 0, y: 0, z: 0 };
+        this.orientation = 0;
+        this.velocity = { x: 0, y: 0, z: 0 };
+    }
+
     display() {
         this.scene.pushMatrix();
+
+        // Position and orient the bee
+        this.scene.translate(this.position.x, this.position.y, this.position.z);
+        this.scene.rotate(this.orientation, 0, 1, 0);
+        this.scene.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
         this.scene.pushMatrix();
 

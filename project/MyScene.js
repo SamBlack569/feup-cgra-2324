@@ -34,10 +34,12 @@ export class MyScene extends CGFscene {
     //Objects connected to MyInterface
     this.displayAxis = true;
     this.displayEarth = false;
-    this.displayGarden = true;
-    this.displayRockSet = true;
+    this.displayGarden = false;
+    this.displayRockSet = false;
     this.displayBee = true;
     this.scaleFactor = 1;
+    this.speedFactor = 1;
+    this.lastTime = 0;
 
     //Initialize scene objects
     this.axis = new CGFaxis(this);
@@ -62,6 +64,7 @@ export class MyScene extends CGFscene {
     this.earthTex = new CGFtexture(this, "images/earth.jpg");
     this.earthApp = new CGFappearance(this);
     this.earthApp.setTexture(this.earthTex);
+    this.setUpdatePeriod(50);
   }
   initLights() {
     this.lights[0].setPosition(15, 0, 5, 1);
@@ -84,6 +87,62 @@ export class MyScene extends CGFscene {
     this.setSpecular(0.2, 0.4, 0.8, 1.0);
     this.setShininess(10.0);
   }
+
+  checkKeys() {
+    var text="Keys pressed:";
+    var keysPressed=false;
+
+    // Check for key codes e.g. in https://keycode.info/
+    if (this.gui.isKeyPressed("KeyW")) {
+      text += " W ";
+      keysPressed = true;
+      this.bee.accelerate(1);
+    }
+
+    if (this.gui.isKeyPressed("KeyS")) {
+      text += " S ";
+      keysPressed = true;
+      this.bee.accelerate(-1);
+    }
+
+    if (this.gui.isKeyPressed("KeyA")) {
+      text += " A ";
+      keysPressed = true;
+      this.bee.turn(0.2);
+    }
+
+    if (this.gui.isKeyPressed("KeyD")) {
+      text += " D ";
+      keysPressed = true;
+      this.bee.turn(-0.2);
+    }
+
+    if (this.gui.isKeyPressed("KeyR")) {
+      text += " R ";
+      keysPressed = true;
+      this.bee.reset();
+    }
+
+    if (keysPressed)
+      console.log(text);
+  }
+
+  setSpeedFactor(v) {
+    this.bee.setSpeedFactor(v);
+  }
+
+  setScaleFactor(v) {
+    this.bee.setScaleFactor(v);
+  }
+
+  update(t) {
+    this.checkKeys();
+    if (this.lastTime === 0) this.lastTime = t;
+    if (this.displayBee) this.bee.update((t - this.lastTime) / 1000.0);
+    this.lastTime = t;
+    super.update(t);
+  }
+
   display() {
     // ---- BEGIN Background, camera and axis setup
     // Clear image and depth buffer everytime we update the scene

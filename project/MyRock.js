@@ -30,7 +30,6 @@ export class MyRock extends CGFobject {
             const randX = this.generateRandom();
             const randY = this.generateRandom();
             this.vertices.push(this.radius * (Math.cos(ang) + randX/10), this.radius * (Math.sin(ang) + randY/10), 0);
-            console.log(randX, randY);
             this.normals.push(Math.cos(ang), Math.sin(ang), 0);
             this.texCoords.push(0, height / (this.stacks * 2));
         }
