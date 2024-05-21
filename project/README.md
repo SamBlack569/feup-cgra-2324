@@ -87,3 +87,13 @@
 - Também é possível dar reset para a posição inicial da abelha;
 
 ![Screenshot 5](screenshots/CG-t07g08-project-5.png)
+
+### 5 - Pólen e colmeia
+
+- Criámos as classes `MyPollen` e `MyHive`, usando a classe `MySphere` para o pólen.
+
+- Colocámos a colmeia sobre as pedras/penedos criados no `ponto 3`.
+
+- Também atualizados a classe `MyBee` para conseguir subir e descer.
+
+![Screenshot 6](screenshots/CG-t07g08-project-6.png)
