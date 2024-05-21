@@ -35,7 +35,7 @@ export class MyAnimatedObject
       var elapsedTimeSecs=timeSinceAppStart-this.animStartTimeSecs;
 
       if (elapsedTimeSecs>=0 && elapsedTimeSecs<=this.animDurationSecs)
-          this.animVal=this.startVal +           (elapsedTimeSecs/this.animDurationSecs) * this.length;
+          this.animVal=this.startVal + (elapsedTimeSecs/this.animDurationSecs) * this.length;
           //this.animVal=this.startVal + this.tween(elapsedTimeSecs/this.animDurationSecs) * this.length;
     }
 
