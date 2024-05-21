@@ -60,6 +60,9 @@ export class MyBee extends CGFobject {
         // Update position based on velocity and delta_t
         this.position.x += this.velocity.x * delta_t;
         this.position.y += this.velocity.y * delta_t;
+        if (this.position.y >= 0 && this.velocity.y > 0) {
+            this.velocity.y = 0;
+        }
         this.position.z += this.velocity.z * delta_t;
 
         this.display();
@@ -73,14 +76,14 @@ export class MyBee extends CGFobject {
         this.orientation = this.orientation % (2 * Math.PI);
 
         // Update the velocity vector direction
-        const speed = Math.sqrt(this.velocity.x**2 + this.velocity.y**2 + this.velocity.z**2);
+        const speed = Math.sqrt(this.velocity.x**2 + this.velocity.z**2);
         this.velocity.x = speed * Math.sin(this.orientation);
         this.velocity.z = speed * Math.cos(this.orientation);
     }
 
     accelerate(v) {
         // Calculate the current speed
-        const speed = Math.sqrt(this.velocity.x**2 + this.velocity.y**2 + this.velocity.z**2);
+        const speed = Math.sqrt(this.velocity.x**2 + this.velocity.z**2);
 
         // Update speed by v
         let newSpeed = speed + v * this.speedFactor;
@@ -89,6 +92,10 @@ export class MyBee extends CGFobject {
         // Update the velocity vector maintaining the direction
         this.velocity.x = newSpeed * Math.sin(this.orientation);
         this.velocity.z = newSpeed * Math.cos(this.orientation);
+    }
+
+    accelerateVertical(v) {
+        this.velocity.y += v * this.speedFactor;
     }
 
     reset() {

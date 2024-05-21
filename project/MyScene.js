@@ -120,6 +120,18 @@ export class MyScene extends CGFscene {
       this.bee.turn(-0.15);
     }
 
+    if (this.gui.isKeyPressed("KeyF")) {
+      text += " F ";
+      keysPressed = true;
+      this.bee.accelerateVertical(-5);
+    }
+
+    if (this.gui.isKeyPressed("KeyP")) {
+      text += " P ";
+      keysPressed = true;
+      this.bee.accelerateVertical(5);
+    }
+
     if (this.gui.isKeyPressed("KeyR")) {
       text += " R ";
       keysPressed = true;
