@@ -18,6 +18,8 @@ export class MyBee extends CGFobject {
         this.band = new MyStem(this.scene, 9, 1);
         this.leg = new MyBeeLeg(this.scene);
         this.wing = new MyBeeWing(this.scene);
+        this.wingAmpDen = 2;
+        this.isAscending = true;
         this.scaleFactor = 1;
         this.speedFactor = 1;
         this.initMaterials();
@@ -95,6 +97,29 @@ export class MyBee extends CGFobject {
         this.position = { x: 0, y: 0, z: 0 };
         this.orientation = 0;
         this.velocity = { x: 0, y: 0, z: 0 };
+    }
+
+
+    //Wings Animation
+    updateWings(t){
+        this.wingAmpDen = Math.max(1.8, 16 - Math.min(16, 1.8 + 16 * Math.sin(t / 50)));
+    }
+
+    //Oscillation Animation
+    updateOsc(t){
+
+        let oscillation = Math.sin(2 * Math.PI * t);
+        let scale = 100;
+
+        if (this.isAscending) {
+            this.position.y += scale * oscillation;
+        } else {
+            this.position.y -= scale * oscillation;
+        }
+
+        if (t % 1 === 0) { //Check if it has reached the end of a second
+            this.isAscending =!this.isAscending;
+        }
     }
 
     display() {
@@ -216,11 +241,10 @@ export class MyBee extends CGFobject {
         this.wingTex.apply();
 
         this.scene.translate(0, 0.5, -0.4);
-        this.scene.rotate(Math.PI/4, 0, 0, 1);
+        this.scene.rotate(Math.PI/this.wingAmpDen, 0, 0, 1);
         this.wing.display();
 
-        this.scene.translate(0, 0, 0);
-        this.scene.rotate(-Math.PI/2, 0, 0, 1);
+        this.scene.rotate(-2 * Math.PI/this.wingAmpDen, 0, 0, 1);
         this.wing.display();
 
         this.scene.popMatrix();
