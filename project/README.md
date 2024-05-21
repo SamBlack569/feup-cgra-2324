@@ -55,3 +55,35 @@
 - `MyRock` foi criado com base na classe `MySphere`, em que cada vértice tem um offset aleatório, fazendo uma superfície imperfeita.
 
 ![Screenshot 3](screenshots/CG-t07g08-project-3.png)
+
+### 4 - Abelha
+
+#### 4.1 - Modelação da abelha
+
+- A criação de uma abelha, na classe `MyBee`, envolve várias classes, como `MyBeeHead`(cabeça da abelha), `MyBeeAntenna`(antena da abelha) e `MyBeeLeg`(perna da abelha) e `MyBeeWing`(Asa da abelha).
+
+- `MyBeeHead` utiliza a classe `MySphere` para a cabeça e olhos e a classe `MyBeeAntenna` para as antenas.
+
+- `MyBeeAntenna` e `MyBeeLeg` utilizam a classe `MyStem`(caule da flor), pois é basicamente um cilindro.
+
+- `MyBeeWing` é um objeto formado por triângulos;
+
+- Foi adicionado no fim uma textura transparente às asas;
+
+![Screenshot 4](screenshots/CG-t07g08-project-4.png)
+
+#### 4.2 - Animação da abelha
+
+- A abelha tem duas animações, uma que envolve uma oscilação para cima e para baixo e outra que é basicamente o batimento de asas.
+
+#### 4.3 - Controlo da abelha
+
+- Adicionámos na classe `MyInterface`, os métodos para processar várias teclas ao mesmo tempo.
+
+- Na classe `MyScene`, acrescentámos o método *`checkKeys()`* ao método *`update()`* .
+
+- Por fim, alterámos a classe `MyBee` de forma a que seja possível rodar, acelerar e travar, tudo para que seja possível andar pela cena.
+
+- Também é possível dar reset para a posição inicial da abelha;
+
+![Screenshot 5](screenshots/CG-t07g08-project-5.png)
