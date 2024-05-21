@@ -30,8 +30,9 @@ export class MyRockSet extends CGFobject {
     
     display() {
         this.scene.pushMatrix();
+        this.scene.translate(0, -60, -50);
+        this.scene.scale(1.8, 1.8, 1.8);
         this.material.apply();
-        this.scene.translate(0, -75, -50);
 
         // Calculate number of rows in the pyramid
         const numRows = Math.ceil(Math.sqrt(this.number));
