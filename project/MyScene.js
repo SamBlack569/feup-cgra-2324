@@ -144,6 +144,7 @@ export class MyScene extends CGFscene {
     if (this.displayBee) this.bee.update((t - this.lastTime) / 1000.0);
     this.lastTime = t;
     this.bee.updateWings(t);
+    this.bee.updateOsc(t);
     super.update(t);
   }
 
