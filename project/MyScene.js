@@ -99,25 +99,25 @@ export class MyScene extends CGFscene {
     if (this.gui.isKeyPressed("KeyW")) {
       text += " W ";
       keysPressed = true;
-      this.bee.accelerate(1);
+      this.bee.accelerate(5);
     }
 
     if (this.gui.isKeyPressed("KeyS")) {
       text += " S ";
       keysPressed = true;
-      this.bee.accelerate(-1);
+      this.bee.accelerate(-5);
     }
 
     if (this.gui.isKeyPressed("KeyA")) {
       text += " A ";
       keysPressed = true;
-      this.bee.turn(0.2);
+      this.bee.turn(0.15);
     }
 
     if (this.gui.isKeyPressed("KeyD")) {
       text += " D ";
       keysPressed = true;
-      this.bee.turn(-0.2);
+      this.bee.turn(-0.15);
     }
 
     if (this.gui.isKeyPressed("KeyR")) {
