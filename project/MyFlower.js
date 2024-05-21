@@ -1,7 +1,8 @@
-import { CGFobject, CGFappearance } from '../lib/CGF.js';
+import { CGFobject, CGFappearance, CGFtexture } from '../lib/CGF.js';
 import { MyPetal } from './MyPetal.js';
 import { MyReceptacle } from './MyReceptacle.js';
 import { MyStem } from './MyStem.js';
+import { MyPollen } from './MyPollen.js';
 
 /**
  * MyFlower
@@ -17,6 +18,7 @@ export class MyFlower extends CGFobject {
         this.petal = new MyPetal(this.scene, Math.PI / this.generateInteger(4, 15), this.generateInteger(0, 3));
         this.receptacle = new MyReceptacle(this.scene, radius_recep);
         this.stem = new MyStem(this.scene, 5, n_stem);
+        this.pollen = new MyPollen(scene);
         this.initMaterials();
     }
 
@@ -25,6 +27,11 @@ export class MyFlower extends CGFobject {
         this.stemTex.setDiffuse(1, 1, 1, 1);
         this.stemTex.setShininess(50.0);
         this.stemTex.loadTexture("images/stem_tex.jpg");
+
+        this.pollenApp = new CGFappearance(this.scene);
+        this.pollenApp.setDiffuse(1, 1, 1, 1);
+        this.pollenApp.setShininess(50.0);
+        this.pollenApp.loadTexture("images/pollen.jpg");
     }
 
     generateRandom(max) {
@@ -53,6 +60,11 @@ export class MyFlower extends CGFobject {
 
         this.scene.rotate(-Math.PI / 10, 1, 0, 0);
 
+        this.scene.pushMatrix();
+        this.pollenApp.apply();
+        this.scene.translate(0, 0, this.radius_recep + 0.7 / 3);
+        this.pollen.display();
+        this.scene.popMatrix();
         this.receptacle.display();
 
         const angle = 2*Math.PI / this.n_petals;
