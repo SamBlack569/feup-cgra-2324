@@ -30,7 +30,7 @@ export class MyRockSet extends CGFobject {
     
     display() {
         this.scene.pushMatrix();
-        this.scene.translate(0, -60, -50);
+        this.scene.translate(0, 15, -50);
         this.scene.scale(1.8, 1.8, 1.8);
         this.material.apply();
 

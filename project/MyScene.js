@@ -164,7 +164,7 @@ export class MyScene extends CGFscene {
 
     this.pushMatrix();
     this.grassApp.apply();
-    this.translate(0,-100,0);
+    this.translate(0,-30,0);
     this.scale(400,400,400);
     this.rotate(-Math.PI/2.0,1,0,0);
     this.plane.display();
@@ -174,8 +174,8 @@ export class MyScene extends CGFscene {
     if (this.displayEarth) this.sphere.display();
     if (this.displayGarden) this.garden.display();
     if (this.displayRockSet) this.rockSet.display();
-    if (this.displayHive) this.hive.display();
     if (this.displayBee) this.bee.display();
+    if (this.displayHive) this.hive.display();
     
     this.panorama.display();
 

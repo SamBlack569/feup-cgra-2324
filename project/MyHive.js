@@ -8,7 +8,7 @@ import { CGFappearance, CGFobject, CGFtexture } from '../lib/CGF.js';
 export class MyHive extends CGFobject {
     constructor(scene) {
         super(scene);
-        this.slices = 10;
+        this.slices = 15;
         this.stacks = 7;
         this.initMaterials();
         this.initSegments();
@@ -38,7 +38,7 @@ export class MyHive extends CGFobject {
     display() {
         this.scene.pushMatrix();
         this.app.apply();
-        this.scene.translate(0, -35, -40);
+        this.scene.translate(0, 30, -50);
         this.scene.rotate(Math.PI / 2, 1, 0, 0);
         for (const segment of this.segments) {
             this.scene.translate(0, 0, this.height); // Translate each segment up by its height
